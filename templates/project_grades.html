@@ -1,0 +1,35 @@
+<html>
+<head>
+    <link href="static/css/style.css" rel="stylesheet" type="text/css">
+
+    <!-- <style type="text/css">
+     .grades {
+            padding: 10px;
+            margin: 10px;
+            float:  left;
+
+     }
+     .box {
+        padding: 1px;
+        margin: 1px;
+        float: left;
+     }
+     </style> -->
+</head>
+<body>
+<h1>{{project_title}}</h1>
+<!-- <div class="grades"> -->
+        <ul>
+        <li>{% for items in grades %}
+        <b>Github:</b> <a href="/student?github={{ items[2] }}">{{ items[2] }}</a></li>
+        <li><b>Student:</b> {{ items[0] }} {{items[1]}}</li>
+        <li><b>Grade:</b> {{ items[3] }}</li>
+        <br>
+
+        {% endfor %}
+        </ul>
+<!-- </div> -->
+<br>
+<a href="/">Back to the Student Portal</a>
+</body>
+</html>

@@ -1,3 +1,17 @@
+html{
+    background-color: rgba(200, 255, 200, 0.5);
+}
+
 body{
     font-family: Helvetica, sans-serif;
+
 }
+
+ul, li{
+    list-style-type: none;
+    display: block;
+    line-height: 1.5em;
+/*    padding: 0px;
+    margin: 0px;
+}*/
+

@@ -7,16 +7,13 @@ def get_student_by_github(github):
     query = """SELECT first_name, last_name, github FROM Students WHERE github = ?"""
     DB.execute(query, (github,))
     row = DB.fetchone()
-    print """\
-Student: %s %s
-Github account: %s"""%(row[0], row[1], row[2])
-
+    return row
 
 def make_new_student(first_name, last_name, github):
     query = """INSERT into Students values (?,?,?)"""
     DB.execute(query, (first_name, last_name, github))
     CONN.commit()
-    print "Successfully added student: %s %s" %(first_name, last_name)
+    return github
 
 
 def get_project_by_title(title):
@@ -32,7 +29,8 @@ def add_project(title, description, max_grade):
     query = """INSERT into Projects VALUES (?, ?, ?)"""
     DB.execute(query, (title, description, max_grade))
     CONN.commit()
-    print "Successfully added Project: %s" % title
+    project_title = title
+    return project_title
 
 def get_grade_for_project(first_name, last_name, project_title):
     query = """SELECT grade FROM Grades LEFT JOIN Students ON Students.github = Grades.student_github WHERE first_name = ? AND last_name = ? AND project_title = ?"""
@@ -41,19 +39,30 @@ def get_grade_for_project(first_name, last_name, project_title):
     print """\
 Grade: %s""" %row[0]
 
+def get_all_grades_for_project(project_title):
+    query = """SELECT first_name, last_name, github, grade FROM Grades LEFT JOIN Students on Students.github = Grades.student_github WHERE project_title = ?"""
+    DB.execute(query, (project_title,))
+    rows = DB.fetchall()
+    return rows
+
 def assign_grade_student(first_name, last_name, project_title, grade):
     query = """INSERT into Grades VALUES ((SELECT github from Students left join Grades on Students.github = Grades.student_github where first_name= ? AND last_name = ?), ?, ?)"""
     DB.execute(query, (first_name, last_name, project_title, grade))
     CONN.commit()
-    print "Successfully assigned grade of %s to %s %s" %(grade, first_name, last_name)
+    
+
+def assign_grade_by_github(github, project_title, grade):
+    query = """INSERT into Grades VALUES (?, ?, ?)"""
+    DB.execute(query, (github, project_title, grade))
+    CONN.commit()
 
 def show_all_student_grades(github):
-    query = """SELECT grade FROM Grades WHERE student_github= ?"""
+    query = """SELECT project_title, grade FROM Grades WHERE student_github= ?"""
     DB.execute(query, (github,))
     row = DB.fetchall()
-    for grade in row:
-        print "%s\n" %grade
-
+    return row
+    # for project_title, grade in row:
+    #     return project_title, grade
 
 def connect_to_db():
     global DB, CONN
@@ -83,6 +92,8 @@ def main():
             assign_grade_student(*args)
         elif command == "all_grades":
             show_all_student_grades(*args)
+        elif command == "all_project_grades":
+            get_all_grades_for_project(*args)
 
     CONN.close()
 
