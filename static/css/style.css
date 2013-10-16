@@ -27,7 +27,7 @@ ul, li{
     background-color: rgba(83, 124, 125, 0.4);
 }
 
-#title {
+.title {
     width: 830px;
     padding: 10px;
     margin: 5px;
