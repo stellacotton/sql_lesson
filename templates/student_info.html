@@ -3,6 +3,7 @@
     <link href="static/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<div id='page-wrap'>
 <h1>Student: {{ last_name }}, {{ first_name }}</h1>
 <h2>Github: {{ github }}</h2>
 
@@ -12,9 +13,9 @@
         <li><a href="/project?project_title={{items[0]}}">{{ items[0] }}</a> : {{ items[1] }} </li>
         {% endfor %}
     </ul>
-
+    <div class="form">
     <h2>Assign Grade to Student</h2>
-    <form action="/grade_student">
+    <form action="/grade_student" method="post">
         <input type="hidden" name="first_name" value="{{first_name}}" />
         <input type="hidden" name="last_name" value="{{last_name}}" />
         <input type="hidden" name="github" value="{{github}}" />
@@ -25,11 +26,16 @@
         <input type="text" name="grade" />
         <input type="submit">
     </form>
+</div>
 
-<br>
+<div class="form">
 <h3>Instructor's Notes:</h3>
 <p>This student has shown extreme recalcitrance and has generally proved to be unreliable.</p>
 <p>It is my recommendation that they be put on double-secret probation for the remainder of the course.</p>
+</div>
+<footer>
 <a href="/">Back to the Student Portal</a>
+</footer>
+</div>
 </body>
 </html>

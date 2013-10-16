@@ -3,61 +3,70 @@
     <link href="static/css/style.css" rel="stylesheet" type="text/css"> 
     </head>
 <body>
-    <h1>Hackbright Portal</h1>
-    <h2>The gradebook is a lie</h2>
-    <br>
-    <h2>Search for Student by Github ID</h2>
-    <form action="/student">
-        <label for="github">Enter github id</label>
-        <input type="text" name="github" />
-        <input type="submit">
-    </form>
-    <br>
-    <h2>Create Student</h2>
-    <form action="/create_student">
-        <label for="first_name">Enter first name:</label>
-        <input type="text" name="first_name" />
+    <div id="page-wrap">
+    <div id="title">
+        <h1>Hackbright Portal</h1>
+        <h2 class="subtitle">The gradebook is a lie</h2>
         <br>
-        <label for="last_name">Enter last name:</label>
-        <input type="text" name="last_name" />
-        <br>
-        <label for="github">Enter github id:</label>
-        <input type="text" name="github" />
-        <input type="submit">
-    </form>
-    <br>
-    <h2>Create Project</h2>
-    <form action="/create_project">
-        <label for="title">Enter project title:</label>
-        <input type="text" name="title" />
-        <br>
-        <label for="description">Enter project description:</label>
-        <input type="text" name="description" />
-        <br>
-        <label for="max_grade">Enter maximum grade:</label>
-        <input type="text" name="max_grade" />
-        <input type="submit">
-    </form>
-    <br>
-     <h2>Assign Grade to Student</h2>
-     <p>Student name is optional, however, you cannot grade a student without their unique ID (aka Github ID)</p>
-    <form action="/grade_student">
-        <label for="first_name">Enter first name:</label>
-        <input type="text" name="first_name" />
-        <br>
-        <label for="last_name">Enter last name:</label>
-        <input type="text" name="last_name" />
-        <br>
-        <label for="github">Enter github id:</label>
-        <input type="text" name="github" />
-        <br>
-        <label for="title">Enter project title:</label>
-        <input type="text" name="title" />
-        <br>
-        <label for="grade">Enter student grade:</label>
-        <input type="text" name="grade" />
-        <input type="submit">
-    </form>
+    </div>    
+    <div class="form">
+        <h2>Search for Student by Github ID</h2>
+        <form action="/student">
+            <label for="github">Enter github id</label>
+            <input type="text" name="github" />
+            <input type="submit">
+        </form>
+    </div>
+    <div class="form">
+        <h2>Create Student</h2>
+        <form action="/create_student" method="post">
+            <label for="first_name">Enter first name:</label>
+            <input type="text" name="first_name" />
+            <br>
+            <label for="last_name">Enter last name:</label>
+            <input type="text" name="last_name" />
+            <br>
+            <label for="github">Enter github id:</label>
+            <input type="text" name="github" />
+            <input type="submit">
+        </form>
+    </div>
 
+    <div class="form">
+        <h2>Create Project</h2>
+        <form action="/create_project" method="post">
+            <label for="title">Enter project title:</label>
+            <input type="text" name="title" />
+            <br>
+            <label for="description">Enter project description:</label>
+            <input type="text" name="description" />
+            <br>
+            <label for="max_grade">Enter maximum grade:</label>
+            <input type="text" name="max_grade" />
+            <input type="submit">
+        </form>
+    </div>
+    <div class="form">
+         <h2>Assign Grade to Student</h2>
+         <p>Student name is optional, however, you cannot grade a student without their unique ID (aka Github ID)</p>
+        <form action="/grade_student" method="post">
+            <label for="first_name">Enter first name:</label>
+            <input type="text" name="first_name" />
+            <br>
+            <label for="last_name">Enter last name:</label>
+            <input type="text" name="last_name" />
+            <br>
+            <label for="github">Enter github id:</label>
+            <input type="text" name="github" />
+            <br>
+            <label for="title">Enter project title:</label>
+            <input type="text" name="title" />
+            <br>
+            <label for="grade">Enter student grade:</label>
+            <input type="text" name="grade" />
+            <input type="submit">
+        </form>
+    </div>
+</div>
 </body>
 </html>

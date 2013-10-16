@@ -4,14 +4,47 @@ html{
 
 body{
     font-family: Helvetica, sans-serif;
-
+}
+#page-wrap{
+    width:900px;
+    margin: 0 auto;
 }
 
 ul, li{
     list-style-type: none;
     display: block;
-    line-height: 1.5em;
+    line-height: 1.5em;}
 /*    padding: 0px;
     margin: 0px;
 }*/
 
+.form{
+    float:left;
+    padding: 10px;
+    margin: 5px;
+    width: 400px;
+    height: 250px;
+    background-color: rgba(83, 124, 125, 0.4);
+}
+
+#title {
+    width: 830px;
+    padding: 10px;
+    margin: 5px;
+    background-color: rgba(47, 108, 111, 0.65);
+    text-align: center;
+}
+
+.subtitle{
+    color: white;
+    font-weight: normal;
+    font-size: 1.2em;
+    font-family: Perpetua, Baskerville, "Big Caslon", "Palatino Linotype", Palatino, "URW Palladio L", "Nimbus Roman No9 L", serif;
+}
+footer{
+    clear:both;
+}
+h1{
+    color: white;
+    font-size: 2.5em;
+    }

@@ -19,12 +19,12 @@ def get_student():
     else:
         return redirect("/")
 
-@app.route("/create_student")
+@app.route("/create_student", methods=["POST"])
 def create_student():
     hackbright_app.connect_to_db()
-    first_name = request.args.get("first_name")
-    last_name = request.args.get("last_name")
-    github = request.args.get("github")
+    first_name = request.form.get("first_name")     
+    last_name = request.form.get("last_name")
+    github = request.form.get("github")
     if first_name and last_name and github:
         hackbright_app.make_new_student(first_name, last_name, github)
 
@@ -32,12 +32,12 @@ def create_student():
     else:
         return redirect("/")
 
-@app.route("/create_project")
+@app.route("/create_project", methods=["POST"])
 def create_project():
     hackbright_app.connect_to_db()
-    title = request.args.get("title")
-    description = request.args.get("description")
-    max_grade = request.args.get("max_grade")
+    title = request.form.get("title")
+    description = request.form.get("description")
+    max_grade = request.form.get("max_grade")
 
     if title and description and max_grade:
         hackbright_app.add_project(title, description, max_grade)
@@ -54,14 +54,14 @@ def get_all_grades_for_project():
                                                   grades = grades)
     return html
 
-@app.route("/grade_student")
+@app.route("/grade_student", methods=["POST"])
 def assign_grade_student():
     hackbright_app.connect_to_db()
-    first_name = request.args.get("first_name")
-    last_name = request.args.get("last_name")
-    github = request.args.get("github")
-    title = request.args.get("title")
-    grade = request.args.get("grade")
+    first_name = request.form.get("first_name")
+    last_name = request.form.get("last_name")
+    github = request.form.get("github")
+    title = request.form.get("title")
+    grade = request.form.get("grade")
     if github and title and grade:
         hackbright_app.assign_grade_by_github(github, title, grade)
         return redirect("/student?github=%s"%github)

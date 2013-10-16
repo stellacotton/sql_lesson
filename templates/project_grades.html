@@ -17,8 +17,9 @@
      </style> -->
 </head>
 <body>
+<div id="page-wrap">
 <h1>{{project_title}}</h1>
-<!-- <div class="grades"> -->
+ <div>
         <ul>
         <li>{% for items in grades %}
         <b>Github:</b> <a href="/student?github={{ items[2] }}">{{ items[2] }}</a></li>
@@ -28,8 +29,11 @@
 
         {% endfor %}
         </ul>
-<!-- </div> -->
+</div>
 <br>
+<footer>
 <a href="/">Back to the Student Portal</a>
+</footer>
+</div>
 </body>
 </html>
